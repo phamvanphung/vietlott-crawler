@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+Here's a comprehensive README.md for your Vietlott Bingo 18 Results Crawler project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```markdown
+# Vietlott Bingo 18 Results Crawler
 
-## Available Scripts
+![App Screenshot](/screenshot.png) <!-- Add screenshot if available -->
 
-In the project directory, you can run:
+A React application that fetches and displays Vietlott Bingo 18 lottery results with both manual and automatic crawling capabilities.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **Working Features**
+- Manual result fetching by ID
+- Automatic sequential result crawling
+- Real-time result display
+- Responsive UI with Tailwind CSS
+- Supabase backend integration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+⚠️ **Untested Features**
+- Notification system for specific conditions (16 consecutive non-12 results)
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js v16+
+- npm v8+
+- Supabase account
+- Vietlott website access
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/vietlott-crawler.git
+   cd vietlott-crawler
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` with your Supabase credentials:
+   ```
+   REACT_APP_SUPABASE_URL=your_supabase_url
+   REACT_APP_SUPABASE_ANON_KEY=your_anon_key
+   REACT_APP_PROXY_URL=your_proxy_internet
+   REACT_APP_RESULT_LIMIT=50
+   REACT_APP_CRAWL_INTERVAL=60000 // 60 seconds
+   ```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Development
+```bash
+npm start
+```
+Runs the app in development mode on `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Production Build
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Key Functionality
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Manual Crawl**
+   - Enter a 7-digit Vietlott ID
+   - Click "Manual Crawl" to fetch specific results
 
-## Learn More
+2. **Auto Crawl**
+   - Click "Start Auto Crawl" to begin sequential fetching
+   - System automatically increments from last known ID
+   - Click "Stop Auto Crawl" to halt the process
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Result Display**
+   - Shows latest 50 results by default
+   - Displays draw date, numbers, and crawl status
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+```
+src/
+├── components/       # React components
+├── contexts/         # Application context
+├── hooks/            # Custom hooks
+├── services/         # Business logic
+├── utils/            # Helper functions
+└── App.js            # Main application
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Known Issues
 
-### Analyzing the Bundle Size
+- CORS restrictions when fetching directly from Vietlott (proxy recommended)
+- Untested notification feature for anomaly detection
+- Limited error recovery for network failures
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Future Improvements
 
-### Making a Progressive Web App
+- Implement server-side proxy for CORS
+- Add user authentication
+- Enhance notification system
+- Implement result analysis tools
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Troubleshooting
 
-### Advanced Configuration
+**Auto-crawl won't stop:**
+- Ensure you're using the latest version of `CrawlerContext.jsx`
+- Verify the stop button handler is properly connected
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Data not displaying:**
+- Check Supabase table structure matches expectations
+- Verify network requests in browser dev tools
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[MIT](LICENSE)
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note:** This application is for educational purposes only. Please comply with Vietlott's terms of service when using this software.
+```

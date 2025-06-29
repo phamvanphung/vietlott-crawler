@@ -30,7 +30,7 @@ export const upsertResult = async (resultData) => {
   return { data, count };
 };
 
-export const getRecentResults = async (limit = 50) => {
+export const getRecentResults = async (limit = process.env.REACT_APP_RESULT_LIMIT || 50) => {
   const { data, error } = await supabase
     .from('vietlot_binggo_18_result')
     .select('*')
