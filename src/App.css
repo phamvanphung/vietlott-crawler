@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+
+.notification-system {
+  font-family: 'Inter', sans-serif;
+}
+
+.notification-list {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.notification-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.notification-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease-out;
+}
+.notification-exit {
+  opacity: 1;
+}
+.notification-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
